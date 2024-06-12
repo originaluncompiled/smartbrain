@@ -1,0 +1,25 @@
+#formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#register, #signIn{
+    background: #ffffff22;
+}
+
+input[type='submit'] {
+    border: #00000066 solid 1px;
+    background: #4c8de2
+}
+
+input[type='submit']:hover {
+    background: #357edd;
+    transition: 0.25s;
+}
+
+.alignLeft {
+    text-align: left;
+}
