@@ -1,5 +1,5 @@
 ﻿# SmartBrain
 
-Website (Frontend) hosted here on [GitHub](https://github.com/originaluncompiled/smartbrain)<br>
-Server hosted on [Render](https://render.com/) - consequently also here on [GitHub](https://github.com/originaluncompiled/smartbrainapi)<br>
+Website (Frontend) hosted [here](https://github.com/originaluncompiled/smartbrain) on GitHub<br>
+Server hosted on [Render](https://render.com/) - consequently also on [GitHub](https://github.com/originaluncompiled/smartbrainapi)<br>
 Database hosted on [SupaBase](https://supabase.com/)<br>
