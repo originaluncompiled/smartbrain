@@ -8,6 +8,8 @@ class Register extends React.Component {
       email: '',
       password: '',
       name: '',
+      buttonValue: 'Register',
+      errorMessage: ''
     }
   }
 
@@ -24,6 +26,19 @@ class Register extends React.Component {
   }
 
   onSubmitRegister = () => {
+    const passwordField = document.getElementById("password");
+    passwordField.value = '';
+
+    const emailField = document.getElementById("email-address");
+    emailField.value = '';
+
+    const nameField = document.getElementById("name");
+    nameField.value = '';
+
+    const registerButton = document.getElementById("mainButton");
+    registerButton.disabled = true;
+    this.setState({buttonValue: 'Registering...'})
+
     fetch('https://smartbrainapi-2r6w.onrender.com/register', {
       method: 'post',
       headers: {'content-type': 'application/json'},
@@ -33,13 +48,19 @@ class Register extends React.Component {
         password: this.state.password
       })
     })
-      .then(response => response.json())
-      .then(user => {
-        if (user.id) {
-          this.props.loadUser(user);
-          this.props.onRouteChange('home')
-        }
-      })
+    .then(response => response.json())
+    .then(user => {
+      if (user.id) {
+        this.props.loadUser(user);
+        this.props.onRouteChange('home')
+      } else {
+        this.setState({errorMessage: user})
+      }
+    })
+    .finally(() => {
+      registerButton.disabled = false;
+      this.setState({buttonValue: 'Register'})
+    })
   }
 
   render() {
@@ -58,6 +79,7 @@ class Register extends React.Component {
                   type="text"
                   name="name"
                   id="name"
+                  required
                 />
               </div>
               <div className="mt3">
@@ -68,6 +90,7 @@ class Register extends React.Component {
                   type="email"
                   name="email-address"
                   id="email-address"
+                  required
                 />
               </div>
               <div className="mv3">
@@ -78,15 +101,18 @@ class Register extends React.Component {
                   type="password"
                   name="password"
                   id="password"
+                  required
                 />
               </div>
             </fieldset>
-            <div className="">
+            {this.state.errorMessage && <p className='dark-red fw7 mt0'>{this.state.errorMessage}</p>}
+            <div>
               <input
                 onClick={this.onSubmitRegister}
                 className="b ph3 pv2 input-reset b--black grow pointer f6 dib br2"
                 type="submit"
-                value="Register"
+                value={this.state.buttonValue}
+                id="mainButton"
               />
             </div>
             <div className="lh-copy mt3">

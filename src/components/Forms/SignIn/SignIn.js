@@ -7,6 +7,8 @@ class SignIn extends React.Component {
     this.state = {
       signInEmail: '',
       signInPassword: '',
+      buttonValue: 'Sign in',
+      errorMessage: ''
     }
   }
 
@@ -19,6 +21,16 @@ class SignIn extends React.Component {
   }
 
   onSubmitSignIn = () => {
+    const passwordField = document.getElementById("password");
+    passwordField.value = '';
+
+    const emailField = document.getElementById("email-address");
+    emailField.value = '';
+
+    const signInButton = document.getElementById("mainButton");
+    signInButton.disabled = true;
+    this.setState({buttonValue: 'Signing in...'})
+
     fetch('https://smartbrainapi-2r6w.onrender.com/signin', {
       method: 'post',
       headers: {'content-type': 'application/json'},
@@ -32,7 +44,13 @@ class SignIn extends React.Component {
       if (user.id) {
         this.props.loadUser(user);
         this.props.onRouteChange('home');
+      } else {
+        this.setState({errorMessage: user})
       }
+    })
+    .finally(() => {
+      signInButton.disabled = false;
+      this.setState({buttonValue: 'Sign in'})
     })
   }
 
@@ -52,6 +70,7 @@ class SignIn extends React.Component {
                   type="email"
                   name="email-address"
                   id="email-address"
+                  required
                 />
               </div>
               <div className="mv3">
@@ -62,15 +81,18 @@ class SignIn extends React.Component {
                   type="password"
                   name="password"
                   id="password"
+                  required
                 />
               </div>
             </fieldset>
-            <div className="">
+            {this.state.errorMessage && <p className='dark-red fw7 mt0'>{this.state.errorMessage}</p>}
+            <div>
               <input
                 onClick={this.onSubmitSignIn}
                 className="b ph3 pv2 input-reset b--black grow pointer f6 dib br2"
                 type="submit"
-                value="Sign in"
+                value={this.state.buttonValue}
+                id="mainButton"
               />
             </div>
             <div className="lh-copy mt3">

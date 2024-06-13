@@ -16,6 +16,7 @@ const initialState = {
   route: 'signin',
   isSignedIn: false,
   buttonValue: 'Detect',
+  inputValue: '',
   user: {
     id: '',
     name: '',
@@ -25,7 +26,7 @@ const initialState = {
   }
 }
 
-let boxCount = 0;
+let boxCount = -1;
 
 class App extends Component {
   constructor() {
@@ -43,8 +44,29 @@ class App extends Component {
     }})
   }
 
+  handleShortcut = (event) => {
+    if (event.key === 'Enter' && !event.repeat) {
+      event.preventDefault();
+      event.stopPropagation();
+      document.getElementById('mainButton').click();
+    }
+  };
+
+  componentDidMount() {
+    document.addEventListener('keyup', this.handleShortcut);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keyup', this.handleShortcut);
+  }
+
   calculateFacesLocation = (data) => {
     const regions = data.outputs[0].data.regions;
+    
+    if (!data.outputs || !data.outputs[0].data.regions) {
+      boxCount = 0;
+      return [];
+    }
 
     const image = document.getElementById("inputImage");
     const width = Number(image.width);
@@ -61,7 +83,7 @@ class App extends Component {
     });
     
     boxCount = regions.length;
-
+    
     return getFaceBoxes;
   }
 
@@ -70,14 +92,21 @@ class App extends Component {
   }
 
   onInputChange = (event) => {
-    this.setState({input: event.target.value});
+    this.setState({
+      input: event.target.value,
+      inputValue: event.target.value
+    });
   }
   
   onPictureSubmit = () => {
-    const inputButton = document.getElementById("inputButton");
+    if (!this.state.input) {
+      return
+    }
+    const inputButton = document.getElementsByClassName("inputButton");
     inputButton.disabled = true;
     this.setState({
       buttonValue: 'Detecting...',
+      inputValue: '',
       imageUrl: this.state.input
     });
 
@@ -91,7 +120,7 @@ class App extends Component {
     .then(response => response.json())
     .then(response => {
       this.displayFaceBoxes(this.calculateFacesLocation(response));
-      if (response) {
+      if (response && response.outputs) {
         fetch('https://smartbrainapi-2r6w.onrender.com/image', {
           method: 'put',
           headers: {'content-type': 'application/json'},
@@ -103,17 +132,24 @@ class App extends Component {
         .then(count => {
           this.setState(Object.assign(this.state.user , { entries: count }))
         })
-        .then(inputButton.disabled = false)
-        .then(this.setState({buttonValue: 'Detect'}))
         .catch(console.log)
       }
     })
-    .catch(err => console.log('Error: ', err));
+    .catch(err => console.log('Error: ', err))
+    .finally(() => {
+      inputButton.disabled = false;
+      this.setState({
+        buttonValue: 'Detect',
+        inputValue: '',
+        input: ''
+      });
+    });
   }
 
   onRouteChange = (route) => {
     if (route === 'signout' || route === 'signin') {
       this.setState(initialState);
+      boxCount = -1;
     } else if (route === 'home') {
       this.setState({isSignedIn: true});
     }
@@ -140,6 +176,7 @@ class App extends Component {
                 onInputChange={this.onInputChange}
                 onPictureSubmit={this.onPictureSubmit}
                 buttonValue={this.state.buttonValue}
+                inputValue={this.state.inputValue}
               />
               <br />
               <section id='output'>
@@ -150,7 +187,7 @@ class App extends Component {
                   id='faceCount'
                   className='white f4'
                 >
-                  {!boxCount ?
+                  {boxCount === -1 ?
                     '' : (
                       boxCount === 1 ?
                         '1 Face Detected' :
@@ -163,7 +200,6 @@ class App extends Component {
 
           : ( route === 'signin' || route === 'signout'
           ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-
           : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
           )
         }
