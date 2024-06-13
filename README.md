@@ -5,9 +5,11 @@ SmartBrain™ is an A.I. Face Recognition system. It detects and highlights all 
 The Final [ZTM](https://zerotomastery.io/) *Complete Web Developer* Project
 
 #### Differences Compared to the Course:
-- Multiple Face support;
+- Multi-Face support;
+- Tells the user when they've, for e.g., entered the wrong email and password;
 - Face counter;
 - Inability to spam buttons (User has to wait for a request to return before sending another);
+- Keybinds for certain actions - like button presses;
 - A generally more pleasant design.
 
 
