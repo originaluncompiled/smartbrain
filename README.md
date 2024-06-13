@@ -1,4 +1,4 @@
-﻿# SmartBrain
+# SmartBrain
 
 SmartBrain™ is an A.I. Face Recognition system. It detects and highlights all the faces in an image.
 
