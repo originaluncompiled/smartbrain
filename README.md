@@ -9,7 +9,7 @@ The Final [ZTM](https://zerotomastery.io/) *Complete Web Developer* Project
 - Tells the user when they've, for e.g., entered the wrong email and password;
 - Face counter;
 - Inability to spam buttons (User has to wait for a request to return before sending another);
-- Keybinds for certain actions - like button presses;
+- Keyboard shortcuts for certain actions - like button presses;
 - A generally more pleasant design.
 
 
