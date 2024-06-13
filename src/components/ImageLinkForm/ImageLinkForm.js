@@ -3,7 +3,7 @@ import './ImageLinkForm.css';
 
 const ImageLinkForm = ({ onInputChange, onPictureSubmit, buttonValue }) => {
     return (
-        <div>
+        <div id='imageInput'>
             <p className='f3'>This <span style={{fontStyle: 'italic'}}>MagicBrain</span>™ will Highlight All the Faces in your Picture!</p>
             <div className='center'>
                 <div className='pa4 br3 shadow-5 form'>

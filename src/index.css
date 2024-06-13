@@ -13,3 +13,41 @@ code {
 button {
   cursor: pointer;
 }
+
+#faceRecognition {
+  justify-self: end;
+  margin-right: 500px;
+}
+
+#faceCount {
+  margin-right: auto;
+}
+
+#output {
+  display: grid;
+  grid-template-columns: calc(50% + 250px) 1fr;
+  grid-gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 950px) {
+  #navContainer {
+    margin-bottom: 35px;
+  }
+
+  #output {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  
+  #faceRecognition {
+    order: 2;
+    justify-self: center;
+  }
+
+  #faceCount {
+    order: 1;
+    justify-self: center;
+    margin-right: unset;
+  }
+}

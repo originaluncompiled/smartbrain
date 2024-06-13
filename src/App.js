@@ -25,6 +25,8 @@ const initialState = {
   }
 }
 
+let boxCount = 0;
+
 class App extends Component {
   constructor() {
     super();
@@ -57,6 +59,8 @@ class App extends Component {
         bottomRow: height - (boundingBox.bottom_row * height)
       }
     });
+    
+    boxCount = regions.length;
 
     return getFaceBoxes;
   }
@@ -124,7 +128,7 @@ class App extends Component {
         
         { route === 'home'
           ? <main>
-              <section style={{display: 'flex', justifyContent: 'space-between'}} className='pa3'>
+              <section className='pa3' id='navContainer' style={{display: 'flex', justifyContent: 'space-between'}} >
                 <Logo />
                 <Navigation onRouteChange={this.onRouteChange}/>
               </section>
@@ -138,9 +142,23 @@ class App extends Component {
                 buttonValue={this.state.buttonValue}
               />
               <br />
-              <FaceRecognition imageUrl={imageUrl} boxLocations={boxLocations}>
-                {/* FaceBoxes go here */}
-              </FaceRecognition>
+              <section id='output'>
+                <FaceRecognition imageUrl={imageUrl} boxLocations={boxLocations}>
+                  {/* FaceBoxes get put here */}
+                </FaceRecognition>
+                <p
+                  id='faceCount'
+                  className='white f4'
+                >
+                  {!boxCount ?
+                    '' : (
+                      boxCount === 1 ?
+                        '1 Face Detected' :
+                          `${boxCount} Faces Detected`
+                    )
+                  }
+                </p>
+              </section>
             </main>
 
           : ( route === 'signin' || route === 'signout'

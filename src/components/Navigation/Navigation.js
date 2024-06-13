@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navigation = ({ onRouteChange }) => {
     return (
-        <nav>
+        <nav id='navbar'>
             <p
                 onClick={() => onRouteChange('signout')}
                 className='f3 link white underline ma3 pointer'
