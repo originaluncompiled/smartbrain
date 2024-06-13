@@ -6,10 +6,10 @@ The Final [ZTM](https://zerotomastery.io/) *Complete Web Developer* Project
 
 #### Differences Compared to the Course:
 - Multi-Face support;
-- Tells the user when they've, for e.g., entered the wrong email and password;
+- Tells the user when they've, *for e.g.*, entered the wrong email and password;
 - Face counter;
 - Inability to spam buttons (User has to wait for a request to return before sending another);
-- Keyboard shortcuts for certain actions - like button presses;
+- Keyboard shortcuts for certain actions - like pressing the *"Detect Faces"* button;
 - A generally more pleasant design.
 
 
@@ -18,7 +18,7 @@ The Final [ZTM](https://zerotomastery.io/) *Complete Web Developer* Project
 
 **Use the app [HERE](https://originaluncompiled.github.io/smartbrain/)**!
 
-__** NOTE:__ It can take upwards of a minute for the *Render* server and *SupaBase* database to spin up after inactivity
+__** NOTE:__ It can take upwards of a minute for the *Render* server and *SupaBase* database to spin up after periods of inactivity
 
 
 ---
