@@ -1,6 +1,6 @@
-# SmartBrainAPI
+# SmartBrain
 
-SmartBrain is an A.I. Face Recognition system. It detects and highlights all the faces in an image.
+SmartBrain™ is an A.I. Face Recognition system. It detects and highlights all the faces in an image.
 
 The Final [ZTM](https://zerotomastery.io/) *Complete Web Developer* Project
 
