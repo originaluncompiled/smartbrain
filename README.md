@@ -10,7 +10,7 @@ The Final [ZTM](https://zerotomastery.io/) *Complete Web Developer* Project
 - Face counter;
 - Inability to spam buttons (User has to wait for a request to return before sending another);
 - Keyboard shortcuts for certain actions - like pressing the *"Detect Faces"* button;
-- A generally more pleasant design.
+- A (in my opinion) better design.
 
 
 ---
