@@ -8,6 +8,7 @@ import SignIn from './components/Forms/SignIn/SignIn.js';
 import Logo from './components/Logo/Logo.js';
 import Rank from './components/Rank/Rank.js';
 import ParticlesBg from 'particles-bg'
+import { isMobile } from 'react-device-detect';
 
 const initialState = {
   input: '',
@@ -160,7 +161,7 @@ class App extends Component {
     const { route, imageUrl, boxLocations } = this.state
     return (
       <div className="App">
-        <ParticlesBg className='particles' color='#C7C7C7' num={150} type='cobweb' bg={true}/>
+        {!isMobile && <ParticlesBg className='particles' color='#C7C7C7' num={150} type='cobweb' bg={true}/>}
         
         { route === 'home'
           ? <main>
