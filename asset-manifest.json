@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/smartbrain/static/css/main.0b54c535.css",
-    "main.js": "/smartbrain/static/js/main.fbedb6f3.js",
-    "static/js/453.baaa5458.chunk.js": "/smartbrain/static/js/453.baaa5458.chunk.js",
+    "main.css": "/smartbrain/static/css/main.3e41c9f4.css",
+    "main.js": "/smartbrain/static/js/main.da5ec915.js",
+    "static/js/453.cd99d480.chunk.js": "/smartbrain/static/js/453.cd99d480.chunk.js",
     "static/media/brain.png": "/smartbrain/static/media/brain.b639461088a03ec669e3.png",
     "index.html": "/smartbrain/index.html",
-    "main.0b54c535.css.map": "/smartbrain/static/css/main.0b54c535.css.map",
-    "main.fbedb6f3.js.map": "/smartbrain/static/js/main.fbedb6f3.js.map",
-    "453.baaa5458.chunk.js.map": "/smartbrain/static/js/453.baaa5458.chunk.js.map"
+    "main.3e41c9f4.css.map": "/smartbrain/static/css/main.3e41c9f4.css.map",
+    "main.da5ec915.js.map": "/smartbrain/static/js/main.da5ec915.js.map",
+    "453.cd99d480.chunk.js.map": "/smartbrain/static/js/453.cd99d480.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0b54c535.css",
-    "static/js/main.fbedb6f3.js"
+    "static/css/main.3e41c9f4.css",
+    "static/js/main.da5ec915.js"
   ]
 }
